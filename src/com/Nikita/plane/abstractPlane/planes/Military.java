@@ -1,23 +1,30 @@
-package com.Nikita.all;
+package com.Nikita.plane.abstractPlane.planes;
 
-import com.Nikita.AbstractPlane;
-import com.Nikita.Plane;
+import com.Nikita.plane.abstractPlane.AbstractPlane;
 
 /**
  * Created by Ananyeu_NA on 06.07.2016.
  */
-public abstract class Military implements Plane, AbstractPlane {
-
-   private int maxBomb;
-    private int weight;
-    private int maxSpeed;
-    private int lenhth ;
-    private int heigth;
+public  class Military extends  AbstractPlane {
+    private Integer maxBomb;
+    private Integer weight;
+    private Integer maxSpeed;
+    private Integer lenhth ;
+    private Integer heigth;
     private String country ;
-    private int maxFligth ;
-    private int people;
+    private Integer maxFligth ;
+    private Integer people;
 
-
+    public Military(Integer maxBomb, Integer weight, Integer maxSpeed, Integer lenhth, Integer heigth, String country, Integer maxFligth, Integer people) {
+        this.maxBomb = maxBomb;
+        this.weight = weight;
+        this.maxSpeed = maxSpeed;
+        this.lenhth = lenhth;
+        this.heigth = heigth;
+        this.country = country;
+        this.maxFligth = maxFligth;
+        this.people = people;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -34,7 +41,6 @@ public abstract class Military implements Plane, AbstractPlane {
         if (maxFligth != military.maxFligth) return false;
         if (people != military.people) return false;
         return country != null ? country.equals(military.country) : military.country == null;
-
     }
 
     @Override
@@ -126,5 +132,10 @@ public abstract class Military implements Plane, AbstractPlane {
                 ", maxFligth=" + maxFligth +
                 ", people=" + people +
                 '}';
+    }
+
+    @Override
+    public void fly() {
+
     }
 }
