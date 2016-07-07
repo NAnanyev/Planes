@@ -1,4 +1,4 @@
-package com.Nikita.plane;
+package com.Nikita.plane.interfacePlane;
 
 /**
  * Created by Ananyeu_NA on 06.07.2016.

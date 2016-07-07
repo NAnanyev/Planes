@@ -1,6 +1,6 @@
 package com.Nikita.person.abstractPerson;
 
-import com.Nikita.person.Person;
+import com.Nikita.person.interfacePerson.Person;
 
 /**
  * Created by Ananyeu_NA on 06.07.2016.
@@ -10,8 +10,6 @@ public abstract class AbstractPersonal implements Person {
     private Integer age;
     private boolean hasChildren;
     private String position;
-
-
 
     @Override
     public String toString() {

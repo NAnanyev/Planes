@@ -1,4 +1,4 @@
-package com.Nikita.person;
+package com.Nikita.person.interfacePerson;
 
 /**
  * Created by Ananyeu_NA on 06.07.2016.

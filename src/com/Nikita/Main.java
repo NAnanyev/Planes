@@ -1,52 +1,52 @@
 package com.Nikita;
 
-import com.Nikita.person.abstractPerson.persons.Mechanic;
-import com.Nikita.person.abstractPerson.persons.Pilot;
-import com.Nikita.person.abstractPerson.persons.Stewardess;
-import com.Nikita.plane.abstractPlane.planes.CargoPlane;
-import com.Nikita.plane.abstractPlane.planes.Civil;
-import com.Nikita.plane.abstractPlane.planes.Military;
+import com.Nikita.airoprts.airport.Airport;
+import com.Nikita.inputs.InputStream;
+import com.Nikita.person.persons.Mechanic;
+import com.Nikita.person.persons.Pilot;
+import com.Nikita.person.persons.Stewardess;
+import com.Nikita.plane.abstractPlane.AbstractPlane;
+import com.Nikita.plane.planes.CargoPlane;
+
+
 import java.util.ArrayList;
+
 /**
  * Created by Ananyeu_NA on 07.07.2016.
  */
+/*
+* To define hierarchy of planes. To create airline. To count the general capacity and loading capacity.
+* To define hierarchy of planes.
+Create class diagram using(for example) - https://www.draw.io/
+*To carry out sorting of planes of the company according to range of flight.
+*To find the plane in the company, corresponding to the set range of parameters.
+*/
+
 public class Main {
-    static ArrayList<Civil> civilPlains = new ArrayList<>();
-    static ArrayList<Military> militaryPlanes = new ArrayList<>();
-    static ArrayList<CargoPlane> cargoPlanes = new ArrayList<>();
-    static ArrayList<Object> personalsWorkingOnMilitary = new ArrayList<>();
-    static ArrayList<Stewardess> stewardesses = new ArrayList<>();
-    static ArrayList<Pilot> pilots = new ArrayList<>();
-    static ArrayList<Mechanic> mechanics = new ArrayList<>();
-    static ArrayList<Object> aiport = new ArrayList<>();
+    static ArrayList<AbstractPlane> planes = new ArrayList<>();
 
     public static void main(String[] args) {
-        civilPlains.add(new Civil(23, 20000, 990, 25, 4000, "Russia", 1600));
-        militaryPlanes.add(new Military(10, 14, 2500, 11, 6500, "USA", 1600, 3));
-        cargoPlanes.add(new CargoPlane(35000, 600, 45, 30, "KNR", 3000, 11));
+        Airport airport = new Airport();
+        InputStream inputStream = new InputStream("src/com/Nikita/input.txt", airport.getPlains());
+        airport = inputStream.readDataFromFile(airport);
+        System.out.println(airport.getPlains());
 
-        stewardesses.add(new Stewardess("Vika", 22, false, "last"));
-        pilots.add(new Pilot("Mike", 43, true, "left pilot"));
-        mechanics.add(new Mechanic("Vova", 35, true, "down mechanik"));
 
-        aiport.add(civilPlains);
-        aiport.add(militaryPlanes);
-        aiport.add(cargoPlanes);
-
-        personalsWorkingOnMilitary.add(stewardesses);
-        personalsWorkingOnMilitary.add(pilots);
-        personalsWorkingOnMilitary.add(mechanics);
-
-        getInformationAboutPlanes(aiport);
-        getInformationAboutPersonal(personalsWorkingOnMilitary);
     }
 
-    public static void getInformationAboutPlanes(ArrayList<Object> list) {
-        System.out.println(list);
+    public ArrayList<AbstractPlane> addCargoPlane(Integer length, Integer heigth, Integer maxFligth, Integer maxSpeed, Integer weigth) {
+        planes.add(new CargoPlane(length, heigth, maxFligth, maxSpeed, weigth));
+        return planes;
+    }
+
+    public ArrayList<AbstractPlane> addCargoPlaneWithPersonal(Integer length, Integer heigth, Integer maxFligth, Integer maxSpeed, Integer weigth, Stewardess stewardess, Mechanic mechanic, Pilot pilot) {
+        planes.add(new CargoPlane(length, heigth, maxFligth, maxSpeed, weigth, stewardess, mechanic, pilot));
+        return planes;
     }
 
 
-    public static void getInformationAboutPersonal(ArrayList<Object> list) {
-        System.out.println(list);
+    public ArrayList<AbstractPlane> addCivilPlane(Integer length, Integer heigth, Integer maxFligth, Integer maxSpeed, Integer people) {
+        planes.add(new CargoPlane(length, heigth, maxFligth, maxSpeed, people));
+        return planes;
     }
 }

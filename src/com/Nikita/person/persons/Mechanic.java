@@ -1,20 +1,20 @@
-package com.Nikita.person.abstractPerson.persons;
+package com.Nikita.person.persons;
 
 import com.Nikita.person.abstractPerson.AbstractPersonal;
 
 /**
  * Created by Ananyeu_NA on 06.07.2016.
  */
-public class Stewardess extends AbstractPersonal {
-   private String position;
-    public Stewardess(String name, Integer age, boolean hasChildren, String position) {
+public class Mechanic extends AbstractPersonal {
+    private String position;
+    public Mechanic(String name, Integer age, boolean hasChildren, String position) {
         super(name, age, hasChildren);
         this.position = position;
     }
 
     @Override
     public String toString() {
-        return "Stewardess{" +
+        return "Mechanic{" +
                 "position='" + position + '\'' +
                 '}';
     }
@@ -25,9 +25,9 @@ public class Stewardess extends AbstractPersonal {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
 
-        Stewardess that = (Stewardess) o;
+        Mechanic mechanic = (Mechanic) o;
 
-        return position != null ? position.equals(that.position) : that.position == null;
+        return position != null ? position.equals(mechanic.position) : mechanic.position == null;
 
     }
 
@@ -48,7 +48,7 @@ public class Stewardess extends AbstractPersonal {
         this.position = position;
     }
 
-    public void giveFood(){}
+    public void doMechanikJob(){}
 
-    public void takeSmile(){}
+    public void checkPlane(){}
 }
