@@ -15,12 +15,12 @@ import java.util.ArrayList;
  */
 public class Military extends AbstractPlane {
     protected Integer maxBomb;
-    protected String category;
+    protected String type;
 
     public Military(Integer length, Integer heigth, Integer maxFligth, Integer maxSpeed, Integer maxBomb) {
         super(length, heigth, maxFligth, maxSpeed);
         this.maxBomb = maxBomb;
-        this.category = "military";
+        this.type = "military";
     }
 
     public Military(Integer length, Integer heigth, Integer maxFligth, Integer maxSpeed, Integer maxBomb, Stewardess stewardess, Mechanic mechanic, Pilot pilot) {

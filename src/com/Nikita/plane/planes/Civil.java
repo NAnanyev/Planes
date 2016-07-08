@@ -13,12 +13,12 @@ import java.util.ArrayList;
  */
 public class Civil extends AbstractPlane {
     protected Integer people;
-    protected String category;
+    protected String type;
 
-    public Civil(Integer length, Integer heigth, Integer maxFligth, Integer maxSpeed, Integer people) {
+    public Civil(Integer length, Integer heigth, Integer maxFligth, Integer maxSpeed, Integer people, String type) {
         super(length, heigth, maxFligth, maxSpeed);
         this.people = people;
-        this.category = "civil";
+        this.type = "civil";
     }
 
     public Civil(Integer length, Integer heigth, Integer maxFligth, Integer maxSpeed, Integer people, Stewardess stewardess, Mechanic mechanic, Pilot pilot) {
@@ -32,6 +32,8 @@ public class Civil extends AbstractPlane {
         this.people = people;
         super.setPersonals(personals);
     }
+
+
 
 
     @Override

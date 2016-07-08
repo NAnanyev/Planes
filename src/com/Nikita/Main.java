@@ -26,27 +26,14 @@ public class Main {
     static ArrayList<AbstractPlane> planes = new ArrayList<>();
 
     public static void main(String[] args) {
-        Airport airport = new Airport();
+      /*
+      *   Airport airport = new Airport();
         InputStream inputStream = new InputStream("src/com/Nikita/input.txt", airport.getPlains());
         airport = inputStream.readDataFromFile(airport);
         System.out.println(airport.getPlains());
+        */
+        MySqlAccess mySqlAccess = new MySqlAccess();
+        mySqlAccess.readDataBase();
 
-
-    }
-
-    public ArrayList<AbstractPlane> addCargoPlane(Integer length, Integer heigth, Integer maxFligth, Integer maxSpeed, Integer weigth) {
-        planes.add(new CargoPlane(length, heigth, maxFligth, maxSpeed, weigth));
-        return planes;
-    }
-
-    public ArrayList<AbstractPlane> addCargoPlaneWithPersonal(Integer length, Integer heigth, Integer maxFligth, Integer maxSpeed, Integer weigth, Stewardess stewardess, Mechanic mechanic, Pilot pilot) {
-        planes.add(new CargoPlane(length, heigth, maxFligth, maxSpeed, weigth, stewardess, mechanic, pilot));
-        return planes;
-    }
-
-
-    public ArrayList<AbstractPlane> addCivilPlane(Integer length, Integer heigth, Integer maxFligth, Integer maxSpeed, Integer people) {
-        planes.add(new CargoPlane(length, heigth, maxFligth, maxSpeed, people));
-        return planes;
     }
 }

@@ -16,7 +16,6 @@ public abstract class AbstractPlane implements Plane {
     protected Integer heigth;
     protected Integer maxFligth;
     protected Integer maxSpeed;
-    protected String category;
     protected ArrayList<AbstractPersonal> personals = new ArrayList<>();
 
     public AbstractPlane(Integer length, Integer heigth, Integer maxFligth, Integer maxSpeed) {

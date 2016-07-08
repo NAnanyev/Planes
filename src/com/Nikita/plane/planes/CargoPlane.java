@@ -13,12 +13,12 @@ import java.util.ArrayList;
  */
 public class CargoPlane extends AbstractPlane {
     protected Integer weigth;
-    protected String category;
+    protected String type;
 
     public CargoPlane(Integer length, Integer heigth, Integer maxFligth, Integer maxSpeed, Integer weigth) {
         super(length, heigth, maxFligth, maxSpeed);
         this.weigth = weigth;
-        this.category = "cargo";
+        this.type = "cargo";
     }
 
     public CargoPlane(Integer length, Integer heigth, Integer maxFligth, Integer maxSpeed, Integer weigth, Stewardess stewardess, Mechanic mechanic, Pilot pilot) {
