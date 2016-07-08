@@ -23,9 +23,22 @@ public class MySqlAccess {
     private PreparedStatement preparedStatement = null;
     private ResultSet resultSet = null;
 
-    static final String DB_URL = "jdbc:mysql://localhost:3306/Project2?autoReconnect=true&useSSL=false";
-    static final String USER = "root";
-    static final String PASS = "root";
+    public Connection getConnection() {
+        return connection;
+    }
+
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+    }
+
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/Project2?autoReconnect=true&useSSL=false";
+    private static final String USER = "root";
+    private static final String PASS = "root";
+
+    public MySqlAccess(Connection connection, PreparedStatement preparedStatement) {
+        this.connection = connection;
+        this.preparedStatement = preparedStatement;
+    }
 
     public void readDataBase() {
         try {
@@ -49,6 +62,7 @@ public class MySqlAccess {
     public void writeResultSet(ResultSet resultSet) {
         try {
             while (resultSet.next()) {
+                Integer id = resultSet.getInt("idPlane");
                 Integer length = resultSet.getInt("length");
                 Integer heigth = resultSet.getInt("heigth");
                 Integer maxFligth = resultSet.getInt("maxFligth");
@@ -59,7 +73,8 @@ public class MySqlAccess {
                 Integer weigth = resultSet.getInt("weigth");
 
                 String type = resultSet.getString("type");
-
+                Integer foreignKey = resultSet.getInt("foreignKey");
+/*
                 System.out.println(length + " length");
                 System.out.println(heigth + " heigth");
                 System.out.println(maxFligth + " maxFligth");
@@ -68,8 +83,9 @@ public class MySqlAccess {
                 System.out.println(bomb + " bomb");
                 System.out.println(weigth + " weigth");
                 System.out.println(type + " type");
+                */
 
-             /*   if (type.equalsIgnoreCase("civil")) {
+                if (type.equalsIgnoreCase("civil")) {
                     planesFromFile.add(new Civil(length, heigth, maxFligth, maxSpeed, people, type));
                 } else if (type.equalsIgnoreCase("cargo")) {
                     planesFromFile.add(new CargoPlane(length, heigth, maxFligth, maxSpeed, weigth));
@@ -84,7 +100,7 @@ public class MySqlAccess {
                     writer.close();
                 } catch (IOException e) {
                     e.printStackTrace();
-                }*/
+                }
 
 
             }
@@ -106,8 +122,8 @@ public class MySqlAccess {
             if (connection != null) {
                 connection.close();
             }
-        } catch (Exception e) {
-
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }
