@@ -23,6 +23,10 @@ public class MySqlAccess {
     private PreparedStatement preparedStatement = null;
     private ResultSet resultSet = null;
 
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/Project2?autoReconnect=true&useSSL=false";
+    private static final String USER = "root";
+    private static final String PASS = "root";
+
     public Connection getConnection() {
         return connection;
     }
@@ -31,13 +35,8 @@ public class MySqlAccess {
         this.connection = connection;
     }
 
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/Project2?autoReconnect=true&useSSL=false";
-    private static final String USER = "root";
-    private static final String PASS = "root";
-
-    public MySqlAccess(Connection connection, PreparedStatement preparedStatement) {
+    public MySqlAccess(Connection connection) {
         this.connection = connection;
-        this.preparedStatement = preparedStatement;
     }
 
     public void readDataBase() {

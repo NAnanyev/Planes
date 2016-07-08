@@ -9,6 +9,7 @@ import com.Nikita.plane.abstractPlane.AbstractPlane;
 import com.Nikita.plane.planes.CargoPlane;
 
 
+import java.sql.Connection;
 import java.util.ArrayList;
 
 /**
@@ -32,6 +33,7 @@ public class Main {
         airport = inputStream.readDataFromFile(airport);
         System.out.println(airport.getPlains());
         */
+
         MySqlAccess mySqlAccess = new MySqlAccess();
         mySqlAccess.readDataBase();
 
