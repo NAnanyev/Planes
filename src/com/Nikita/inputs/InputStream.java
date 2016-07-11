@@ -25,7 +25,6 @@ public class InputStream {
 
     public static ArrayList<AbstractPlane> planesFromFile;
 
-
     public InputStream(String inputFile, ArrayList<AbstractPlane> planesFromFile) {
         this.inputFile = inputFile;
         this.planesFromFile = planesFromFile;
