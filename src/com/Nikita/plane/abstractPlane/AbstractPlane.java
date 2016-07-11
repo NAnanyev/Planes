@@ -25,24 +25,25 @@ public abstract class AbstractPlane implements Plane {
         this.maxSpeed = maxSpeed;
     }
 
-    public void addAllPersonal(Stewardess stewardess, Mechanic mechanic, Pilot pilot){
+    public void addAllPersonal(Stewardess stewardess, Mechanic mechanic, Pilot pilot) {
         personals.add(stewardess);
         personals.add(mechanic);
         personals.add(pilot);
     }
 
-    public void addPersonal(AbstractPersonal person){
+    public void addPersonal(AbstractPersonal person) {
         personals.add(person);
     }
-    public void addStewardress(Stewardess stewardess){
+
+    public void addStewardress(Stewardess stewardess) {
         personals.add(stewardess);
     }
 
-    public void addMechanik(Mechanic mechanic){
+    public void addMechanik(Mechanic mechanic) {
         personals.add(mechanic);
     }
 
-    public void addPilot(Pilot pilot){
+    public void addPilot(Pilot pilot) {
         personals.add(pilot);
     }
 
@@ -56,11 +57,11 @@ public abstract class AbstractPlane implements Plane {
 
     @Override
     public String toString() {
-        return " " +
+        return ", " +
                 "length=" + length +
                 ", heigth=" + heigth +
                 ", maxFligth=" + maxFligth +
-                ", maxSpeed=" + maxSpeed ;
+                ", maxSpeed=" + maxSpeed + "}";
     }
 
     @Override
@@ -74,7 +75,6 @@ public abstract class AbstractPlane implements Plane {
         if (heigth != null ? !heigth.equals(that.heigth) : that.heigth != null) return false;
         if (maxFligth != null ? !maxFligth.equals(that.maxFligth) : that.maxFligth != null) return false;
         return maxSpeed != null ? maxSpeed.equals(that.maxSpeed) : that.maxSpeed == null;
-
     }
 
     @Override
@@ -119,7 +119,5 @@ public abstract class AbstractPlane implements Plane {
     }
 
     @Override
-    public void fly() {
-
-    }
+    public void fly() {}
 }

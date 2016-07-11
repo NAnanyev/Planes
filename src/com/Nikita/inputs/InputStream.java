@@ -39,7 +39,6 @@ public class InputStream {
                 String line = input.readLine();
                 airp.setPlains(processData(line, delimiters));
                 writeDataToFile();
-
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -60,7 +59,6 @@ public class InputStream {
 
         StringTokenizer st = new StringTokenizer(line, delim);
         try {
-
             Integer length = new Integer(st.nextToken());
             Integer heigth = new Integer(st.nextToken());
             Integer maxFligth = new Integer(st.nextToken());
@@ -81,7 +79,6 @@ public class InputStream {
             System.out.println("No Data");
         }
         return planesFromFile;
-
     }
 
     public static void writeDataToFile() {

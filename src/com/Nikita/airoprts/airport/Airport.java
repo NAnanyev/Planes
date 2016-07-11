@@ -3,14 +3,11 @@ package com.Nikita.airoprts.airport;
 import com.Nikita.plane.abstractPlane.AbstractPlane;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 
-import static com.Nikita.MySqlAccess.collectionPlanes;
-
 /**
- * Created by Ananyeu_NA on 06.07.2016.
+ * Created by Ananyeu_NA on 11.07.2016.
  */
 public class Airport {
     private ArrayList<AbstractPlane> plains = new ArrayList<>();
@@ -30,13 +27,13 @@ public class Airport {
     @Override
     public String toString() {
         String result = "Airport{" +
-                "plains="+"\n";
+                "plains=" + "\n";
 
         for (AbstractPlane aaaa : plains) {
             result += aaaa;
-            result+="\n";
+            result += "\n";
         }
-        return result+'}';
+        return result + '}';
     }
 
    /*
@@ -50,6 +47,16 @@ public class Airport {
                 return o1.getMaxFligth().toString().compareTo(o2.getMaxFligth().toString());
             }
         });
+    }
 
+    public void findSpeed(int min, int max) {
+        ArrayList<AbstractPlane> list = new ArrayList<>();
+        for (AbstractPlane value : plains) {
+            Integer maxSpeed = value.getMaxSpeed();
+            if (maxSpeed > min && maxSpeed < max) {
+                list.add(value);
+            }
+        }
+        System.out.println(list);
     }
 }

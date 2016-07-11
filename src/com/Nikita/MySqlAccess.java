@@ -18,11 +18,10 @@ import java.util.ArrayList;
 public class MySqlAccess {
 
     private static FileWriter writer = null;
-    private static String outputFile = "src/com/Nikita/output.txt";
+    private String outputFile;
 
     private Connection connection = null;
     private Statement statement = null;
-    private PreparedStatement preparedStatement = null;
     private ResultSet resultSet = null;
 
     public static ArrayList<AbstractPlane> collectionPlanes = new ArrayList<>();
@@ -30,6 +29,10 @@ public class MySqlAccess {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/Project2?autoReconnect=true&useSSL=false";
     private static final String USER = "root";
     private static final String PASS = "root";
+
+    public MySqlAccess(String outputFile) {
+        this.outputFile = outputFile;
+    }
 
     public Connection getConnection() {
         return connection;
@@ -44,12 +47,9 @@ public class MySqlAccess {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(DB_URL, USER, PASS);
-
             statement = connection.createStatement();
-
             resultSet = statement.executeQuery("SELECT  * FROM Plains");
             while (resultSet.next()) {
-
                 air.setPlains(processData());
                 writeResultSet(resultSet);
             }
@@ -74,17 +74,6 @@ public class MySqlAccess {
             Integer bomb = resultSet.getInt("bomb");
             Integer weigth = resultSet.getInt("weigth");
             String type = resultSet.getString("type");
-
-/*
-                System.out.println(length + " length");
-                System.out.println(heigth + " heigth");
-                System.out.println(maxFligth + " maxFligth");
-                System.out.println(maxSpeed + " maxSpeed");
-                System.out.println(people + " people");
-                System.out.println(bomb + " bomb");
-                System.out.println(weigth + " weigth");
-                System.out.println(type + " type");
-                */
 
             if (type.equalsIgnoreCase("civil")) {
                 collectionPlanes.add(new Civil(length, heigth, maxFligth, maxSpeed, people, type));

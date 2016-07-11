@@ -29,8 +29,6 @@ Create class diagram using(for example) - https://www.draw.io/
 */
 
 public class Main {
-
-
     public static void main(String[] args) {
       /*
       *read from database and write to the screan
@@ -40,13 +38,21 @@ public class Main {
         System.out.println(airport.getPlains());
         */
 
-
-        // read from database and write to the file
+       /*// read from database and write to the file
         Airport airport = new Airport(collectionPlanes);
-        MySqlAccess mySqlAccess = new MySqlAccess();
+        MySqlAccess mySqlAccess = new MySqlAccess("src/com/Nikita/output.txt");
         airport = mySqlAccess.readDataBase(airport);
-
         airport.sort();
         log(airport.toString());
+    */
+
+        //To find the plane in the company, corresponding to the set range of parameters.
+
+        Airport airport = new Airport(collectionPlanes);
+        MySqlAccess mySqlAccess = new MySqlAccess("src/com/Nikita/output.txt");
+        airport = mySqlAccess.readDataBase(airport);
+        airport.findSpeed(1000, 2700);
+
+
     }
 }

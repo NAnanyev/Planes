@@ -49,7 +49,6 @@ public class CargoPlane extends AbstractPlane {
         CargoPlane that = (CargoPlane) o;
 
         return weigth != null ? weigth.equals(that.weigth) : that.weigth == null;
-
     }
 
     @Override
@@ -68,7 +67,5 @@ public class CargoPlane extends AbstractPlane {
     }
 
     @Override
-    public void fly() {
-
-    }
+    public void fly() {}
 }
