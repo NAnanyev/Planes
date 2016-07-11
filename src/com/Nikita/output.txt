@@ -1,0 +1,1 @@
+[CargoPlane{weigth=40000 length=25, heigth=12, maxFligth=1600, maxSpeed=990}, Civil{people=540 length=42, heigth=45, maxFligth=2500, maxSpeed=1500}, Military{maxBomb=25 length=18, heigth=10, maxFligth=2100, maxSpeed=2500]

@@ -1,6 +1,9 @@
 package com.Nikita;
 
 import com.Nikita.airoprts.airport.Airport;
+
+import static com.Nikita.Log.log;
+
 import com.Nikita.inputs.InputStream;
 import com.Nikita.person.persons.Mechanic;
 import com.Nikita.person.persons.Pilot;
@@ -11,6 +14,8 @@ import com.Nikita.plane.planes.CargoPlane;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+
+import static com.Nikita.MySqlAccess.collectionPlanes;
 
 /**
  * Created by Ananyeu_NA on 07.07.2016.
@@ -24,18 +29,24 @@ Create class diagram using(for example) - https://www.draw.io/
 */
 
 public class Main {
-    static ArrayList<AbstractPlane> planes = new ArrayList<>();
+
 
     public static void main(String[] args) {
       /*
-      *   Airport airport = new Airport();
+      *read from database and write to the screan
+         *  Airport airport = new Airport();
         InputStream inputStream = new InputStream("src/com/Nikita/input.txt", airport.getPlains());
         airport = inputStream.readDataFromFile(airport);
         System.out.println(airport.getPlains());
         */
 
-        MySqlAccess mySqlAccess = new MySqlAccess();
-        mySqlAccess.readDataBase();
 
+        // read from database and write to the file
+        Airport airport = new Airport(collectionPlanes);
+        MySqlAccess mySqlAccess = new MySqlAccess();
+        airport = mySqlAccess.readDataBase(airport);
+
+        airport.sort();
+        log(airport.toString());
     }
 }

@@ -1,5 +1,6 @@
 package com.Nikita;
 
+import com.Nikita.airoprts.airport.Airport;
 import com.Nikita.plane.abstractPlane.AbstractPlane;
 import com.Nikita.plane.planes.CargoPlane;
 import com.Nikita.plane.planes.Civil;
@@ -11,7 +12,10 @@ import java.sql.*;
 import java.util.ArrayList;
 
 
-    public class MySqlAccess {
+/**
+ * Created by Ananyeu_NA on 08.07.2016.
+ */
+public class MySqlAccess {
 
     private static FileWriter writer = null;
     private static String outputFile = "src/com/Nikita/output.txt";
@@ -21,7 +25,7 @@ import java.util.ArrayList;
     private PreparedStatement preparedStatement = null;
     private ResultSet resultSet = null;
 
-    private ArrayList<AbstractPlane> collectionPlanes = new ArrayList<>();
+    public static ArrayList<AbstractPlane> collectionPlanes = new ArrayList<>();
 
     private static final String DB_URL = "jdbc:mysql://localhost:3306/Project2?autoReconnect=true&useSSL=false";
     private static final String USER = "root";
@@ -35,16 +39,21 @@ import java.util.ArrayList;
         this.connection = connection;
     }
 
-    public void readDataBase() {
+    public Airport readDataBase(Airport airport) {
+        Airport air = airport;
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(DB_URL, USER, PASS);
+
             statement = connection.createStatement();
+
             resultSet = statement.executeQuery("SELECT  * FROM Plains");
             while (resultSet.next()) {
-                processData();
+
+                air.setPlains(processData());
                 writeResultSet(resultSet);
             }
+            writeResultSet(resultSet);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -52,23 +61,21 @@ import java.util.ArrayList;
         } finally {
             close();
         }
+        return air;
     }
 
-    private void processData() {
+    public ArrayList<AbstractPlane> processData() {
         try {
-
             Integer length = resultSet.getInt("length");
             Integer heigth = resultSet.getInt("heigth");
             Integer maxFligth = resultSet.getInt("maxFligth");
             Integer maxSpeed = resultSet.getInt("maxSpeed");
-
             Integer people = resultSet.getInt("people");
             Integer bomb = resultSet.getInt("bomb");
             Integer weigth = resultSet.getInt("weigth");
-
             String type = resultSet.getString("type");
 
-               /*
+/*
                 System.out.println(length + " length");
                 System.out.println(heigth + " heigth");
                 System.out.println(maxFligth + " maxFligth");
@@ -91,10 +98,10 @@ import java.util.ArrayList;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return collectionPlanes;
     }
 
     public void writeResultSet(ResultSet resultSet) {
-
         try {
             writer = new FileWriter(outputFile);
             writer.write(collectionPlanes.toString());
